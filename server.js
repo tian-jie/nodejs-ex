@@ -92,6 +92,24 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
+app.get('/counts', function (req, res) {
+  // try to initialize the db on every request if it's not already
+  // initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    db.collection('counts').count(function(err, count){
+      var counts = db.collection('counts');
+      res.render('count.html', {count: count, counts: counts});      
+    });
+    
+
+  } else {
+    res.send('no database connected.');
+  }
+});
+
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
