@@ -101,8 +101,9 @@ app.get('/counts', function (req, res) {
   }
   if (db) {
     db.collection('counts').count(function (err, count) {
-      db.collection('counts').find({ip: {$ne: '127.0.0.1'}}, function (err, counts) {
-        res.render('count.html', { count: count, counts: counts });
+      db.collection('counts').find({ip: {$ne: '127.0.0.1'}}).toArray(function (err, cts) {
+        console.debug(cts);
+        res.render('count.html', { count: count, counts: cts });
       });
     });
 
