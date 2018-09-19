@@ -57,6 +57,7 @@ var initDb = function (callback) {
 };
 
 app.get('/', function (req, res) {
+  console.log(process.env.DATABASE_SERVICE_NAME);
   // try to initialize the db on every request if it's not already
   // initialized.
   if (!db) {
@@ -88,7 +89,7 @@ app.get('/pagecount', function (req, res) {
       res.send('{ pageCount: ' + count + '}');
     });
   } else {
-    res.send('{ pageCount: -2 }');
+    res.send('{ pageCount: -1 }');
   }
 });
 
