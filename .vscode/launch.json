@@ -11,7 +11,7 @@
             "name": "Launch Program",
             "program": "${workspaceFolder}/server.js",
             "env": {
-                "MONGO_URL": "mongodb://10.0.0.195:27017/test"
+                "MONGO_URL": "mongodb://192.168.100.23:27017/mongodb"
                 
             }
         }
